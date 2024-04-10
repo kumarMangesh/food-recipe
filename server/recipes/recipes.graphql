@@ -1,0 +1,39 @@
+type Query {
+  recipes(limit: Int, page: Int): Response
+  recipeByID(id: ID!): Recipe
+}
+
+type Recipe {
+  name: String
+  id: Int
+  cuisine: String
+  difficulty: String
+  tags: [String]
+  image: String
+  rating: Float
+  mealType: [String]
+  ingredients: [String]
+  instructions: [String]
+  prepTimeMinutes: Int
+  cookTimeMinutes: Int
+  servings: Int
+  caloriesPerServing: Int
+}
+
+type Response {
+  recipes: [Recipe]
+  totalCount: Int
+  totalPages: Int
+}
+
+type Mutation {
+  addRecipe(
+    name: String
+    mealType: [String]!
+    cuisine: String!
+    difficulty: String!
+    tags: [String]!
+    ingredients: [String]
+    instructions: [String]
+  ): Recipe
+}
